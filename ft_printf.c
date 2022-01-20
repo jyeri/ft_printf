@@ -6,14 +6,16 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:34 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/01/20 13:45:00 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:58:15 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags	init_flags (t_flags flags)
+t_flags	init_flags (void)
 {
+	t_flags flags;
+
 	flags.plus = 0;
 	flags.minus = 0;
 	flags.width = 0;
@@ -25,7 +27,29 @@ t_flags	init_flags (t_flags flags)
 	return (flags);
 }
 
-void	ft_check_flags(const char *s, int i, t_flags flags)
+void	read_input(const char *s, va_list args)
+{
+	int i;
+	t_flags flags;
+
+	i = 0;
+	flags = init_flags();
+	while (s)
+	{
+		if (s[i] == '%' && s[i + 1])
+		{
+			i = ft_check_flags(s, i, args, flags);
+			ft_check_type(s, i, args, flags);
+		}
+		else
+		{
+			write (1, &s[i], 1);
+		}
+		i++;
+	}
+}
+
+int	ft_check_flags(const char *s, int i, va_list args, t_flags flags)
 {
 	while (s[i] != 'c' || s[i] != 's' || s[i] != 'p' || s[i] != 'd' || s[i] != 'i' || s[i] != 'o' || s[i] != 'u' || s[i] != 'x' || s[i] != 'X' || s[i] != 'f')
 	{
@@ -43,9 +67,10 @@ void	ft_check_flags(const char *s, int i, t_flags flags)
 			flags.dot = 1;
 		i++;
 	}
+	return (i);
 }
 
-void	ft_check_type(const char *s, int index t_flags flags)
+void	ft_check_type(const char *s, int index, va_list args, t_flags flags)
 {
 	if (s[index] == 'c')
 		print_char(s, index);
@@ -64,26 +89,10 @@ void	ft_check_type(const char *s, int index t_flags flags)
 void	ft_printf(const char *s, ...)
 {
 	int	i;
-	t_flags flags;
 	va_list	args;
 
-	flags = (t_flags)malloc(sizeof(t_flags));
-	if (!flags)
-		exit(-1);
-	flags = init_flags(flags);
 	i = 0;
-	while (s)
-	{
-		if (s[i] == '%')
-		{
-			i++;
-			ft_check_flags(*s, i, flags);
-			ft_check_type(*s, i, flags);
-		}
-		else
-		{
-			write (1, &s[i], 1);
-		}
-		i++;
-	}
+	va_start(args, s);
+	read_input(s, args);
+	va_end(args);
 }
