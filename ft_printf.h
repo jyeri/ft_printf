@@ -6,11 +6,12 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:37 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/01/18 20:03:59 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/01/20 13:37:39 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include <stdarg.h>
 
 typedef struct s_flags
 {
