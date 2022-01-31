@@ -72,15 +72,15 @@ int ft_store_prec (const char *s, int i, t_flags flags)
 void	read_input(const char *s, va_list args)
 {
 	int i;
-//	t_flags flags;
+	t_flags flags;
 
 	i = 0;
-//	flags = init_flags();
+	flags = init_flags();
 	while (s[i] != '\0')
 	{
 		if (s[i] == '%' && s[i + 1])
 		{
-//			i = ft_check_flags(s, i, flags);
+			i = ft_check_flags(s, i, flags);
 			ft_check_type(s, i, args);
 		}
 		else
@@ -125,23 +125,27 @@ void	ft_check_type(const char *s, int index, va_list args)
 	if (s[index] == 'd' || s[index] == 'c' || s[index] == 'i')
 	{
 		i = va_arg(args, int);
-		ft_putnbr(i);
+		ft_putn(i);
 	}
 	if (s[index] == 's')
 	{
 		str = va_arg(args, char *);
-		ft_putstr(str);
+		ft_putstr(s);
 	}
-//	if (s[index] == 'p')
-//		print_pointer(va_arg(args, int), flags);
-//	if (s[index] == 'o');
-//		print_octal(va_arg(args, unsigned int), flags);
-//	if (s[index] == 'f' || s[index] == 'F')
-//		print_float(va_arg(args, float), flags);
-//	if (s[index] == 'u');
-//		print_unsigned(va_arg(args, unsigned int), flags);
-//	if (s[index] == 'x' || s[index] == 'X');
-//		print_hexa(va_arg(args, unsigned int), flags);
+	if (s[index] == 'p')
+		print_pointer(va_arg(args, int), flags);
+	if (s[index] == 'o');
+		print_octal(va_arg(args, unsigned int), flags);
+	if (s[index] == 'f' || s[index] == 'F')
+		print_float(va_arg(args, float), flags);
+	if (s[index] == 'u');
+		print_unsigned(va_arg(args, unsigned int), flags);
+	if (s[index] == 'x' || s[index] == 'X');
+		print_hexa(va_arg(args, unsigned int), flags);
+	else
+	{
+		ft_printf("error!");
+	}
 }
 
 void	ft_printf(const char *s, ...)
