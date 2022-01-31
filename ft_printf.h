@@ -26,3 +26,12 @@ typedef struct s_flags
 	int type; //store the type
 
 } t_flags;
+
+t_flags	init_flags (void);
+int ft_is_type_list(const char *s, int i);
+int ft_store_prec (const char *s, int i, t_flags flags);
+int ft_store_width (const char *s, int i, t_flags flags);
+void	read_input(const char *s, va_list args);
+int	ft_check_flags(const char *s, int i, t_flags flags);
+void	ft_check_type(const char *s, int index, va_list args);
+void	ft_printf(const char *s, ...);
