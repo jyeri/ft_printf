@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 t_flags	init_flags (void)
 {
@@ -69,7 +70,7 @@ int ft_store_prec (const char *s, int i, t_flags flags)
 	return (precandwidth);
 }
 
-void	read_input(const char *s, va_list args)
+int	read_input(const char *s, va_list args)
 {
 	int i;
 	t_flags flags;
@@ -80,8 +81,9 @@ void	read_input(const char *s, va_list args)
 	{
 		if (s[i] == '%' && s[i + 1])
 		{
-			i = ft_check_flags(s, i, flags);
-			ft_check_type(s, i, args);
+//			i = i + ft_check_flags(s, i + 1, flags);
+			ft_check_type(s, i + 1, args);
+			i++;
 		}
 		else
 		{
@@ -89,72 +91,79 @@ void	read_input(const char *s, va_list args)
 		}
 		i++;
 	}
-}
-
-int	ft_check_flags(const char *s, int i, t_flags flags)
-{
-	while (s[i] != 'c' || s[i] != 's' || s[i] != 'p' || s[i] != 'd' || s[i] != 'i' || s[i] != 'o' || s[i] != 'u' || s[i] != 'x' || s[i] != 'X' || s[i] != 'f')
-	{
-		if (s[i] == '+')
-			flags.plus = 1;
-		if (s[i] == '-')
-			flags.minus = 1;
-		if (s[i] == ' ')
-			flags.sp = 1;
-		if (s[i] == '#')
-			flags.hash = 1;
-		if (s[i] == '0')
-			flags.zero = 1;
-		if (s[i] == '.')
-		{
-			flags.dot = 1;
-			i = i + ft_store_width(s, i, flags);
-		}
-		if (s[i] <= 9 && s[i] > 0)
-			i = i + ft_store_prec(s, i, flags);
-		i++;
-	}
 	return (i);
 }
 
-void	ft_check_type(const char *s, int index, va_list args)
-{
-	int i;
-	char *str;
+//int	ft_check_flags(const char *s, int i, t_flags flags)
+//{
+//	while (s[i] != 'c' || s[i] != 's' || s[i] != 'p' || s[i] != 'd' || s[i] != 'i' || s[i] != 'o' || s[i] != 'u' || s[i] != 'x' || s[i] != 'X' || s[i] != 'f')
+//	{
+//		if (s[i] == '+')
+//			flags.plus = 1;
+//		if (s[i] == '-')
+//			flags.minus = 1;
+//		if (s[i] == ' ')
+//			flags.sp = 1;
+//		if (s[i] == '#')
+//			flags.hash = 1;
+//		if (s[i] == '0')
+//			flags.zero = 1;
+//		if (s[i] <= 9 && s[i] > 0)
+//			i = i + ft_store_prec(s, i, flags);
+//		if (s[i] == '.')
+//		{
+//			flags.dot = 1;
+//			i = i + ft_store_width(s, i, flags);
+//		}
+//		i++;
+//	}
+//	return (i);
+//}
 
-	if (s[index] == 'd' || s[index] == 'c' || s[index] == 'i')
+int	ft_check_type(const char *s, int index, va_list args)
+{
+	int i = 0;
+	char *str = NULL;
+
+	if (s[index] == 'd' || s[index] == 'i')
 	{
 		i = va_arg(args, int);
-		ft_putn(i);
+		ft_putnbr(i);
+		index++;
 	}
-	if (s[index] == 's')
+	else if (s[index] == 's')
 	{
 		str = va_arg(args, char *);
-		ft_putstr(s);
+		ft_putstr(str);
+		index++;
 	}
-	if (s[index] == 'p')
-		print_pointer(va_arg(args, int), flags);
+	if (s[index] == 'c')
+		ft_putchar(va_arg(args, int));
+	if (s[index] == 'p');
+		print_pointer(va_arg(args, unsigned long), flags);
 	if (s[index] == 'o');
 		print_octal(va_arg(args, unsigned int), flags);
 	if (s[index] == 'f' || s[index] == 'F')
-		print_float(va_arg(args, float), flags);
+		print_float(va_arg(args, double), flags);
 	if (s[index] == 'u');
 		print_unsigned(va_arg(args, unsigned int), flags);
 	if (s[index] == 'x' || s[index] == 'X');
 		print_hexa(va_arg(args, unsigned int), flags);
-	else
-	{
-		ft_printf("error!");
-	}
+//	else
+//	{
+//		ft_printf("error!");
+//	}
+	return (i);
 }
 
-void	ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
 	int	i;
 	va_list	args;
 
 	i = 0;
 	va_start(args, s);
-	read_input(s, args);
+	i = read_input(s, args);
 	va_end(args);
+	return (i);
 }

@@ -35,8 +35,8 @@ int	main(void)
 	printf("real: %c\n", c);
 	ft_printf("mine: %c\n\n", c);
 
-	printf("real: %s\n", s);
-	ft_printf("mine: %s\n\n", s);
+	printf("real: %s this\n", s);
+	ft_printf("mine: %s this\n\n", s);
 //
 //	printf("real: %p\n", &s);
 //	ft_printf("mine: %p\n\n", &s);
