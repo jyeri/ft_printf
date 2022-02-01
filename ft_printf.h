@@ -35,3 +35,5 @@ int	read_input(const char *s, va_list args);
 int	ft_check_flags(const char *s, int i, t_flags flags);
 int	ft_check_type(const char *s, int index, va_list args);
 int	ft_printf(const char *s, ...);
+int print_octal(unsigned int i);
+int print_unsigned(unsigned int i);

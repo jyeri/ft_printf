@@ -18,12 +18,14 @@ int	main(void)
 	int i;
 	int i2;
 	int i3;
+	unsigned int ui;
 	char c;
 	const char *s;
 
-	i = 5;
+	i = 9;
 	i2 = 6;
 	i3 = 7;
+	ui = 3000000000;
 	c = 'a';
 	s = "HELLO";
 	printf("real: %i this\n", i);
@@ -41,11 +43,11 @@ int	main(void)
 //	printf("real: %p\n", &s);
 //	ft_printf("mine: %p\n\n", &s);
 //
-//	printf("real: %o\n", i);
-//	ft_printf("mine: %o\n\n", i);
+	printf("real: %o\n", i);
+	ft_printf("mine: %o\n\n", i);
 //
-//	printf("real: %u\n", i);
-//	ft_printf("mine: %u\n\n", i);
+	printf("real: %u\n", ui);
+	ft_printf("mine: %u\n\n", ui);
 //
 	return (0);
 }

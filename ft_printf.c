@@ -139,16 +139,16 @@ int	ft_check_type(const char *s, int index, va_list args)
 	}
 	if (s[index] == 'c')
 		ft_putchar(va_arg(args, int));
-	if (s[index] == 'p');
-		print_pointer(va_arg(args, unsigned long), flags);
-	if (s[index] == 'o');
-		print_octal(va_arg(args, unsigned int), flags);
-	if (s[index] == 'f' || s[index] == 'F')
-		print_float(va_arg(args, double), flags);
-	if (s[index] == 'u');
-		print_unsigned(va_arg(args, unsigned int), flags);
-	if (s[index] == 'x' || s[index] == 'X');
-		print_hexa(va_arg(args, unsigned int), flags);
+//	if (s[index] == 'p')
+//		print_pointer(va_arg(args, unsigned long), flags);
+	if (s[index] == 'o')
+		print_octal(va_arg(args, unsigned int));
+//	if (s[index] == 'f' || s[index] == 'F')
+//		print_float(va_arg(args, double), flags);
+	if (s[index] == 'u')
+		print_unsigned(va_arg(args, unsigned int));
+//	if (s[index] == 'x' || s[index] == 'X')
+//		print_hexa(va_arg(args, unsigned int), flags);
 //	else
 //	{
 //		ft_printf("error!");
