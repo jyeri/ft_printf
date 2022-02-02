@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:34 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/01/20 20:58:15 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:44:34 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,18 @@ int	read_input(const char *s, va_list args)
 //			flags.dot = 1;
 //			i = i + ft_store_width(s, i, flags);
 //		}
+//		if (s[i] == 'l')
+//			if s[i + 1] == 'l'
+//				i++;
+//				flags.ll = 1;
+//			else
+//				flags.l = 1;
+//		if (s[i] == 'h')
+//			if s[i + 1] == 'h'
+//				i++;
+//				flags.hh = 1;
+//			else
+//				flags.h = 1;
 //		i++;
 //	}
 //	return (i);

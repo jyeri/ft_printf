@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:37 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/01/20 21:07:02 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:44:52 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_flags
 	int sp; //flag space (' ')
 	int dot; //flag dot
 	int type; //store the type
+	int l; //long
+	int ll; //long long
+	int h; // short int
+	int hh; //short
 
 } t_flags;
 
