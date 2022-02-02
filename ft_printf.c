@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:34 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 18:21:47 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:19:17 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	read_input(const char *s, va_list args)
 	{
 		if (s[i] == '%' && s[i + 1])
 		{
-//			i = i + ft_check_flags(s, i + 1, flags);
-			ft_check_type(s, i + 1, args);
+			ft_check_type(s, i + 1, args, flags);
 			i++;
 		}
 		else
@@ -94,49 +93,68 @@ int	read_input(const char *s, va_list args)
 	return (i);
 }
 
-//int	ft_check_flags(const char *s, int i, t_flags flags)
-//{
-//	while (s[i] != 'c' || s[i] != 's' || s[i] != 'p' || s[i] != 'd' || s[i] != 'i' || s[i] != 'o' || s[i] != 'u' || s[i] != 'x' || s[i] != 'X' || s[i] != 'f')
-//	{
-//		if (s[i] == '+')
-//			flags.plus = 1;
-//		if (s[i] == '-')
-//			flags.minus = 1;
-//		if (s[i] == ' ')
-//			flags.sp = 1;
-//		if (s[i] == '#')
-//			flags.hash = 1;
-//		if (s[i] == '0')
-//			flags.zero = 1;
-//		if (s[i] <= 9 && s[i] > 0)
-//			i = i + ft_store_prec(s, i, flags);
-//		if (s[i] == '.')
-//		{
-//			flags.dot = 1;
-//			i = i + ft_store_width(s, i, flags);
-//		}
-//		if (s[i] == 'l')
-//			if s[i + 1] == 'l'
-//				i++;
-//				flags.ll = 1;
-//			else
-//				flags.l = 1;
-//		if (s[i] == 'h')
-//			if s[i + 1] == 'h'
-//				i++;
-//				flags.hh = 1;
-//			else
-//				flags.h = 1;
-//		i++;
-//	}
-//	return (i);
-//}
+void	ft_check_flags(const char *s, int i, t_flags flags)
+{
+	if (ft_isdigit(s[i]))
+	{
+		if (flags.dot || flags.zero)
+			flags.precision = flags.precision * 10 + s[i] - '0';
+		else
+		{
+			if (!flags.width && s[i] == '0')
+				flags.zero = 1;
+			flags.width = flags.width * 10 + s[i] - '0';
+		}
+	}
+	if (s[i] == '+')
+		flags.plus = 1;
+	if (s[i] == '-')
+		flags.minus = 1;
+	if (s[i] == ' ')
+		flags.sp = 1;
+	if (s[i] == '#')
+		flags.hash = 1;
+	if (s[i] == '.')
+		flags.dot = 1;
+	if (s[i] == 'l')
+	{
+		if (s[i + 1] == 'l')
+		{
+			i++;
+			flags.ll = 1;
+		}
+		else
+		{
+			flags.l = 1;
+		}
+	}
+	if (s[i] == 'h')
+	{
+		if (s[i + 1] == 'h')
+		{
+			i++;
+			flags.hh = 1;
+		}
+		else
+		{
+			flags.h = 1;
+		}
+	}
 
-int	ft_check_type(const char *s, int index, va_list args)
+}
+
+int	ft_check_type(const char *s, int index, va_list args, t_flags flags)
 {
 	int i = 0;
 	char *str = NULL;
 
+	while (s[index] != 'c' && s[index] != 's' && s[index] != 'p'
+		&& s[index] != 'd' && s[index] != 'i' && s[index] != 'o'
+		&& s[index] != 'u' && s[index] != 'x' && s[index] != 'X')
+	{
+		ft_check_flags(s, index + 1, flags);
+		index++;
+	}
 	if (s[index] == 'd' || s[index] == 'i')
 	{
 		i = va_arg(args, int);

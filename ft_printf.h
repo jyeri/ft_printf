@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:37 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 18:20:22 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:46:17 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int ft_is_type_list(const char *s, int i);
 int ft_store_prec (const char *s, int i, t_flags flags);
 int ft_store_width (const char *s, int i, t_flags flags);
 int	read_input(const char *s, va_list args);
-int	ft_check_flags(const char *s, int i, t_flags flags);
-int	ft_check_type(const char *s, int index, va_list args);
+void	ft_check_flags(const char *s, int i, t_flags flags);
+int	ft_check_type(const char *s, int index, va_list args, t_flags flags);
 int	ft_printf(const char *s, ...);
 int print_octal(unsigned int i);
 int print_unsigned(unsigned int i, int base);
