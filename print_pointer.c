@@ -1,11 +1,21 @@
 #include "ft_printf.h"
 
-//int print_pointer(unsigned long i, t_flags flags)
-//{
-//
-//}
-//
-//int print_octal(unsigned int i, t_flags flags)
+int print_address(unsigned long long i, int base)
+{
+	const char *values = "0123456789abcdef";
+	if (i / base)
+		print_address(i / base, base);
+	ft_putchar(values[i % base]);
+	return (i);
+}
+
+int print_pointer(unsigned long long i)
+{
+	ft_putstr("0x");
+	print_address(i, 16);
+	return (i);
+}
+
 int print_octal(unsigned int i)
 {
 	int j = 0;
@@ -28,8 +38,18 @@ int print_octal(unsigned int i)
 	return (k);
 }
 
-int print_unsigned(unsigned int i)
+int print_unsigned(unsigned int i, int base)
 {
-	ft_putnbr(i);
+	const char *values = "0123456789abcdef";
+	int sign = 1;
+
+	if (i < 0)
+	{
+		sign = -1;
+		ft_putchar('-');
+	}
+	if (i / base)
+		print_unsigned(i / base * sign, base);
+	ft_putchar(values[i % base * sign]);
 	return (i);
 }

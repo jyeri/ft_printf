@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:34 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 15:44:34 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:21:47 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int ft_store_width (const char *s, int i, t_flags flags)
 	i++;
 	while (ft_is_type_list(s, i) == 0)
 	{
-		if (s[i] > 9 && s[i] < 0)
-			exit (-1);
+//		if (s[i] > 9 && s[i] < 0)
+//			exit (-1);
 		flags.width = flags.width * 10 + s[i];
 		width++;
 		i++;
@@ -151,16 +151,18 @@ int	ft_check_type(const char *s, int index, va_list args)
 	}
 	if (s[index] == 'c')
 		ft_putchar(va_arg(args, int));
-//	if (s[index] == 'p')
-//		print_pointer(va_arg(args, unsigned long), flags);
+	if (s[index] == 'p')
+		print_pointer(va_arg(args, unsigned long long));
 	if (s[index] == 'o')
 		print_octal(va_arg(args, unsigned int));
 //	if (s[index] == 'f' || s[index] == 'F')
 //		print_float(va_arg(args, double), flags);
 	if (s[index] == 'u')
-		print_unsigned(va_arg(args, unsigned int));
-//	if (s[index] == 'x' || s[index] == 'X')
-//		print_hexa(va_arg(args, unsigned int), flags);
+		print_unsigned(va_arg(args, unsigned int), 10);
+	if (s[index] == 'x' || s[index] == 'X')
+		print_unsigned(va_arg(args, unsigned int), 16);
+//	if (str[index + 1] == '%')
+//		ft_putchar(str[index]);
 //	else
 //	{
 //		ft_printf("error!");

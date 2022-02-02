@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:40 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/01/18 13:16:03 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:27:08 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,29 @@ int	main(void)
 	ui = 3000000000;
 	c = 'a';
 	s = "HELLO";
-	printf("real: %i this\n", i);
-	ft_printf("mine: %i this\n\n", i);
+	printf("real [i]: %i ending\n", i);
+	ft_printf("mine [i]: %i ending\n\n", i);
 
-	printf("real: %d this\n", i);
-	ft_printf("mine: %d this\n\n", i);
+	printf("real [d]: %d ending\n", i);
+	ft_printf("mine [d]: %d ending\n\n", i);
 
-	printf("real: %c\n", c);
-	ft_printf("mine: %c\n\n", c);
+	printf("real [c]: %c ending\n", c);
+	ft_printf("mine [c]: %c ending\n\n", c);
 
-	printf("real: %s this\n", s);
-	ft_printf("mine: %s this\n\n", s);
-//
-//	printf("real: %p\n", &s);
-//	ft_printf("mine: %p\n\n", &s);
-//
-	printf("real: %o\n", i);
-	ft_printf("mine: %o\n\n", i);
-//
-	printf("real: %u\n", ui);
-	ft_printf("mine: %u\n\n", ui);
-//
+	printf("real [s]: %s ending\n", s);
+	ft_printf("mine [s]: %s ending\n\n", s);
+
+	printf("real [p]: %p ending\n", &s);
+	ft_printf("mine [p]: %p ending\n\n", &s);
+
+	printf("real [o]: %o ending\n", i);
+	ft_printf("mine [o]: %o ending\n\n", i);
+
+	printf("real [u]: %u ending\n", ui);
+	ft_printf("mine [u]: %u ending\n\n", ui);
+
+	printf("real [x]: %x ending\n", ui);
+	ft_printf("mine [x]: %x ending\n\n", ui);
+
 	return (0);
 }

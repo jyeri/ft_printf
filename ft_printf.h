@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:37 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 15:44:52 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:20:22 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,6 @@ int	ft_check_flags(const char *s, int i, t_flags flags);
 int	ft_check_type(const char *s, int index, va_list args);
 int	ft_printf(const char *s, ...);
 int print_octal(unsigned int i);
-int print_unsigned(unsigned int i);
+int print_unsigned(unsigned int i, int base);
+int print_pointer(unsigned long long i);
+int print_address(unsigned long long i, int base);
