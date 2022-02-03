@@ -35,39 +35,39 @@ int ft_is_type_list(const char *s, int i)
 	return (0);
 }
 
-int ft_store_width (const char *s, int i, t_flags flags)
-{
-	int width;
-
-	width = 1;
-	i++;
-	while (ft_is_type_list(s, i) == 0)
-	{
+//int ft_store_width (const char *s, int i, t_flags flags)
+//{
+//	int width;
+//
+//	width = 1;
+//	i++;
+//	while (ft_is_type_list(s, i) == 0)
+//	{
 //		if (s[i] > 9 && s[i] < 0)
 //			exit (-1);
-		flags.width = flags.width * 10 + s[i];
-		width++;
-		i++;
-	}
-	return (width);
-}
-
-int ft_store_prec (const char *s, int i, t_flags flags)
-{
-	int precandwidth;
-
-	precandwidth = 0;
-	while (s[i] != '.' && ft_is_type_list(s, i) != 1)
-	{
-		flags.precision = flags.precision * 10 + s[i];
-		precandwidth++;
-		i++;
-	}
-	if (s[i] == '.')
-	{
-		precandwidth = precandwidth + ft_store_width(s, i, flags);
-	}
-	return (precandwidth);
+//		flags.width = flags.width * 10 + s[i];
+//		width++;
+//		i++;
+//	}
+//	return (width);
+//}
+//
+//int ft_store_prec (const char *s, int i, t_flags flags)
+//{
+//	int precandwidth;
+//
+//	precandwidth = 0;
+//	while (s[i] != '.' && ft_is_type_list(s, i) != 1)
+//	{
+//		flags.precision = flags.precision * 10 + s[i];
+//		precandwidth++;
+//		i++;
+//	}
+//	if (s[i] == '.')
+//	{
+//		precandwidth = precandwidth + ft_store_width(s, i, flags);
+//	}
+//	return (precandwidth);
 }
 
 int	read_input(const char *s, va_list args)
