@@ -32,4 +32,5 @@ int print_address(unsigned long long i, int base);
 int print_pointer(t_flags *flags);
 int print_octal(t_flags *flags);
 int print_unsigned(char c, t_flags *flags, int base);
+int print_float(t_flags *flags);
 void print_nbr_base(long long n, int base, t_flags *flags);
