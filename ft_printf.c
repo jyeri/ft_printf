@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf->c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jrummuka <jrummuka@student->hive->fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:34 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 19:19:17 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:19:17 by jrummuka         ###   ########->fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 t_flags	init_flags (void)
 {
-	t_flags flags;
+	t_flags *flags;
 
-	flags.plus = 0;
-	flags.minus = 0;
-	flags.width = 0;
-	flags.precision = 0;
-	flags.sp = 0;
-	flags.hash = 0;
-	flags.zero = 0;
-	flags.dot = 0;
-	return (flags);
+	flags->plus = 0;
+	flags->minus = 0;
+	flags->width = 0;
+	flags->precision = 0;
+	flags->sp = 0;
+	flags->hash = 0;
+	flags->zero = 0;
+	flags->dot = 0;
+	return (&flags);
 }
 
 int ft_is_type_list(const char *s, int i)
@@ -45,7 +45,7 @@ int ft_is_type_list(const char *s, int i)
 //	{
 //		if (s[i] > 9 && s[i] < 0)
 //			exit (-1);
-//		flags.width = flags.width * 10 + s[i];
+//		flags->width = flags->width * 10 + s[i];
 //		width++;
 //		i++;
 //	}
@@ -57,18 +57,18 @@ int ft_is_type_list(const char *s, int i)
 //	int precandwidth;
 //
 //	precandwidth = 0;
-//	while (s[i] != '.' && ft_is_type_list(s, i) != 1)
+//	while (s[i] != '->' && ft_is_type_list(s, i) != 1)
 //	{
-//		flags.precision = flags.precision * 10 + s[i];
+//		flags->precision = flags->precision * 10 + s[i];
 //		precandwidth++;
 //		i++;
 //	}
-//	if (s[i] == '.')
+//	if (s[i] == '->')
 //	{
 //		precandwidth = precandwidth + ft_store_width(s, i, flags);
 //	}
 //	return (precandwidth);
-}
+//}
 
 int	read_input(const char *s, va_list args)
 {
@@ -93,39 +93,39 @@ int	read_input(const char *s, va_list args)
 	return (i);
 }
 
-void	ft_check_flags(const char *s, int i, t_flags flags)
+void ft_check_flags(const char *s, int i, t_flags *flags)
 {
 	if (ft_isdigit(s[i]))
 	{
-		if (flags.dot || flags.zero)
-			flags.precision = flags.precision * 10 + s[i] - '0';
+		if (flags->dot || flags->zero)
+			flags->precision = flags->precision * 10 + s[i] - '0';
 		else
 		{
-			if (!flags.width && s[i] == '0')
-				flags.zero = 1;
-			flags.width = flags.width * 10 + s[i] - '0';
+			if (!flags->width && s[i] == '0')
+				flags->zero = 1;
+			flags->width = flags->width * 10 + s[i] - '0';
 		}
 	}
 	if (s[i] == '+')
-		flags.plus = 1;
+		flags->plus = 1;
 	if (s[i] == '-')
-		flags.minus = 1;
+		flags->minus = 1;
 	if (s[i] == ' ')
-		flags.sp = 1;
+		flags->sp = 1;
 	if (s[i] == '#')
-		flags.hash = 1;
+		flags->hash = 1;
 	if (s[i] == '.')
-		flags.dot = 1;
+		flags->dot = 1;
 	if (s[i] == 'l')
 	{
 		if (s[i + 1] == 'l')
 		{
 			i++;
-			flags.ll = 1;
+			flags->ll = 1;
 		}
 		else
 		{
-			flags.l = 1;
+			flags->l = 1;
 		}
 	}
 	if (s[i] == 'h')
@@ -133,14 +133,13 @@ void	ft_check_flags(const char *s, int i, t_flags flags)
 		if (s[i + 1] == 'h')
 		{
 			i++;
-			flags.hh = 1;
+			flags->hh = 1;
 		}
 		else
 		{
-			flags.h = 1;
+			flags->h = 1;
 		}
 	}
-
 }
 
 int	ft_check_type(const char *s, int index, va_list args, t_flags flags)
@@ -152,7 +151,8 @@ int	ft_check_type(const char *s, int index, va_list args, t_flags flags)
 		&& s[index] != 'd' && s[index] != 'i' && s[index] != 'o'
 		&& s[index] != 'u' && s[index] != 'x' && s[index] != 'X')
 	{
-		ft_check_flags(s, index + 1, flags);
+		ft_check_flags(s, index, &flags);
+		ft_putnbr(flags->width);
 		index++;
 	}
 	if (s[index] == 'd' || s[index] == 'i')
@@ -168,7 +168,7 @@ int	ft_check_type(const char *s, int index, va_list args, t_flags flags)
 		index++;
 	}
 	if (s[index] == 'c')
-		ft_putchar(va_arg(args, int));
+		print_char(va_arg(args, int));
 	if (s[index] == 'p')
 		print_pointer(va_arg(args, unsigned long long));
 	if (s[index] == 'o')
@@ -188,7 +188,7 @@ int	ft_check_type(const char *s, int index, va_list args, t_flags flags)
 	return (i);
 }
 
-int	ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ->)
 {
 	int	i;
 	va_list	args;

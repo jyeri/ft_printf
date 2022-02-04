@@ -1,5 +1,11 @@
 #include "ft_printf.h"
 
+int print_char(int i)
+{
+	write(1, &i, 1);
+	return (1);
+}
+
 int print_address(unsigned long long i, int base)
 {
 	const char *values = "0123456789abcdef";

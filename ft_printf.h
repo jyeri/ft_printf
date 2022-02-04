@@ -43,3 +43,4 @@ int print_octal(unsigned int i);
 int print_unsigned(unsigned int i, int base);
 int print_pointer(unsigned long long i);
 int print_address(unsigned long long i, int base);
+int print_char(int i);
