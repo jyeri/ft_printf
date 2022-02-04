@@ -32,6 +32,8 @@ char *ft_check_type(char *s, t_flags *flags)
 		print_unsigned(*s, flags, 10);
 	if (*s == 'x' || *s == 'X')
 		print_unsigned(*s, flags, 16);
+	if (*s == 'f')
+		print_float(*s, flags);
 	return (++s);
 }
 
