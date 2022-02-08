@@ -14,7 +14,7 @@ int int_len(int i)
 	return (len);
 }
 
-int print_int(t_flags *flags)
+int print_di(t_flags *flags)
 {
 	int i;
 	int len;

@@ -18,23 +18,50 @@ char *ft_check_type(char *s, t_flags *flags)
 	{
 		ft_check_flags(*s++, flags);
 	}
-	if (*s == 'd' || *s == 'i')
-		print_int(flags);
-	if (*s == 's')
-		print_string(flags);
-	if (*s == 'c')
-		print_char(flags);
-	if (*s == 'p')
+	flags->type = *s;
+	if (flags->type == 'd' || flags->type == 'i')
+		print_di(flags);
+	else if (flags->type == 's')
+		print_s(flags);
+	else if (flags->type == 'c')
+		print_c(flags);
+	else if (flags->type == 'p')
 		print_pointer(flags);
-	if (*s == 'o')
+	else if (flags->type == 'o')
 		print_octal(flags);
-	if (*s == 'u')
+	else if (flags->type == 'u')
 		print_unsigned(*s, flags, 10);
-	if (*s == 'x' || *s == 'X')
+	else if (flags->type == 'x' || flags->type == 'X')
 		print_unsigned(*s, flags, 16);
-	if (*s == 'f')
+	else if (flags->type == 'f')
 		print_float(flags);
+	else
+	{
+		ft_putstr("error!");
+	}
 	return (++s);
+}
+
+void ft_lengthspec(char s, t_flags *flags)
+{
+	if (s == 'h')
+	{
+		if (flags->h)
+		{
+			flags->h = 0;
+			flags->hh = 1;
+		}
+		flags->h = 1;
+	}
+	if (s == 'l')
+	{
+		if (flags->l)
+		{
+			flags->l = 0;
+			flags->ll = 1;
+		}
+		flags->l = 1;
+	}
 }
 
 void	ft_check_flags(char s, t_flags *flags)
@@ -60,6 +87,8 @@ void	ft_check_flags(char s, t_flags *flags)
 		flags->hash = 1;
 	if (s == '.')
 		flags->dot = 1;
+	if (s == 'l' || s == 'h')
+		ft_lengthspec(s, flags);
 }
 
 int	ft_printf(const char *s, ...)

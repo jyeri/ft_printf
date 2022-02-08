@@ -17,6 +17,7 @@ typedef struct s_flags
 	int ll; //long long
 	int h; // short int
 	int hh; //short
+	int bigones;
 	va_list args;
 
 } t_flags;
@@ -25,8 +26,9 @@ void init_flags (t_flags *flags);
 int	ft_printf(const char *s, ...);
 void	ft_check_flags(char s, t_flags *flags);
 char *ft_check_type(char *s, t_flags *flags);
-int print_int(t_flags *flags);
-int print_char(t_flags *flags);
+int print_di(t_flags *flags);
+int print_c(t_flags *flags);
+int print_s(t_flags *flags);
 int print_string(t_flags *flags);
 int print_address(unsigned long long i, int base);
 int print_pointer(t_flags *flags);

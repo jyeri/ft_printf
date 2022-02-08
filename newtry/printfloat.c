@@ -2,14 +2,14 @@
 
 char *ldtoa(long double ld)
 {
-	char *str;
+	char *str = NULL;
 	double base;
 
 	base = 10;
 
 	while (ld > 0)
 	{
-		*str = ld % base - '0'; 
+//		*str = ld % base - '0'; 
 		ld = ld / base;
 	}
 	return (str);
