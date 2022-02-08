@@ -12,11 +12,11 @@ typedef struct s_flags
 	int sp; //flag space (' ')
 	int dot; //flag dot
 	int type; //store the type
+	int base;
 	int l; //long
 	int ll; //long long
 	int h; // short int
 	int hh; //short
-	int bigones;
 	va_list args;
 
 } t_flags;

@@ -25,7 +25,7 @@ int	main(void)
 	i = 902;
 	i2 = 6;
 	i3 = 7;
-	ui = 3000000000;
+	ui = 3000.000000;
 	c = 'a';
 	s = "HELLO";
 	printf("real [i]: %i ending\n", i);

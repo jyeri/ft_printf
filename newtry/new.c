@@ -4,8 +4,8 @@ void	init_flags (t_flags *flags)
 {
 	flags->plus = 0;
 	flags->minus = 0;
-	flags->width = 0;
-	flags->precision = 0;
+	flags->width = -1;
+	flags->precision = -1;
 	flags->sp = 0;
 	flags->hash = 0;
 	flags->zero = 0;
