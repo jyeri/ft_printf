@@ -17,7 +17,9 @@ typedef struct s_flags
 	int ll; //long long
 	int h; // short int
 	int hh; //short
+	int offset; // width is bigger than precision
 	int bigones;
+	int bigL;
 	va_list args;
 
 } t_flags;
@@ -36,3 +38,4 @@ int print_octal(t_flags *flags);
 int print_unsigned(char c, t_flags *flags, int base);
 int print_float(t_flags *flags);
 void print_nbr_base(long long n, int base, t_flags *flags);
+void print_actual_string(char *str, t_flags *flags);

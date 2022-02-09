@@ -1,27 +1,38 @@
 #include "new.h"
 
-void print_actual_string(char *s, t_flags *flags)
+void ft_putnstr(char *str, int len)
 {
-	write(1, s, len);
+	write (1, str, len);
 }
 
 int print_s(t_flags *flags)
 {
 	char *str;
-	char *tmp;
-	int i;
 	int len;
+	int return_value;
 
-	i = 0;
 	str = va_arg(flags->args, char *);
-	if (flags->precision >= 0)
+	if (!str)
+		str = "(null)";
+	len = ft_strlen(str);
+	if (!flags->dot || flags->precision > len)
+		flags->precision = len;
+	if (flags->width > flags->precision)
+		flags->offset = flags->width - flags->precision;
+	return_value = flags->offset + flags->precision;
+	if (flags->minus)
 	{
-		tmp = ft_strsub(str, 0, flags->precision)
-		free(str);
-		str = tmp;
+		ft_putstr(str);
+		while (flags->offset-- > 0)
+			ft_putchar(' ');
 	}
-	print_actual_string(&str, flags);
-	return (1);
+	else
+	{
+		while (flags->offset-- > 0)
+			ft_putchar(' ');
+		ft_putnstr(str, flags->precision);
+	}
+	return (return_value);
 }
 
 int print_c(t_flags *flags)

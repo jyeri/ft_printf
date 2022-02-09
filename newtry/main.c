@@ -67,6 +67,12 @@ int	main(void)
 	printf("real [+-7.5i]: %+-7.5i ending\n", i);
 	ft_printf("mine [+-7.5i]: %+-7.5i ending\n\n", i);
 
+	printf("real [7.5s]: %7.5s ending\n", s);
+	ft_printf("mine [7.5s]: %7.5s ending\n\n", s);
+
+	printf("real [-7.5s]: %-7.5s ending\n", s);
+	ft_printf("mine [-7.5s]: %-7.5s ending\n\n", s);
+
 	printf("real [5d]: %5d ending\n", i);
 	ft_printf("mine [5d]: %5d ending\n\n", i);
 

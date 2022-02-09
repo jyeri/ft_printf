@@ -4,8 +4,8 @@ void	init_flags (t_flags *flags)
 {
 	flags->plus = 0;
 	flags->minus = 0;
-	flags->width = -1;
-	flags->precision = -1;
+	flags->width = 0;
+	flags->precision = 0;
 	flags->sp = 0;
 	flags->hash = 0;
 	flags->zero = 0;
@@ -77,18 +77,20 @@ void	ft_check_flags(char s, t_flags *flags)
 			flags->width = flags->width * 10 + s - '0';
 		}
 	}
-	if (s == '+')
+	else if (s == '+')
 		flags->plus = 1;
-	if (s == '-')
+	else if (s == '-')
 		flags->minus = 1;
-	if (s == ' ')
+	else if (s == ' ')
 		flags->sp = 1;
-	if (s == '#')
+	else if (s == '#')
 		flags->hash = 1;
-	if (s == '.')
+	else if (s == '.')
 		flags->dot = 1;
-	if (s == 'l' || s == 'h')
+	else if (s == 'l' || s == 'h')
 		ft_lengthspec(s, flags);
+	else if (s == 'L')
+		flags->bigL = 1;
 }
 
 int	ft_printf(const char *s, ...)
