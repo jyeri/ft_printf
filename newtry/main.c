@@ -123,5 +123,33 @@ int	main(void)
 	printf("real [25p]: %25p ending\n", &ui);
 	ft_printf("mine [25p]: %25p ending\n\n", &ui);
 
+	printf("TESTS WITH X:\n\n");
+
+	printf("real [x]: %x ending\n", i);
+	ft_printf("mine [x]: %x ending\n\n", i);
+
+	printf("real [x]: %x ending\n", ui);
+	ft_printf("mine [x]: %x ending\n\n", ui);
+
+	printf("real [-25x]: %-25x ending\n", c);
+	ft_printf("mine [-25x]: %-25x ending\n\n", c);
+
+	printf("real [25x]: %25x ending\n", ui);
+	ft_printf("mine [25x]: %25x ending\n\n", ui);
+
+	printf("TESTS WITH O:\n\n");
+
+	printf("real [o]: %o ending\n", i);
+	ft_printf("mine [o]: %o ending\n\n", i);
+
+	printf("real [o]: %o ending\n", ui);
+	ft_printf("mine [o]: %o ending\n\n", ui);
+
+	printf("real [-25o]: %-25o ending\n", c);
+	ft_printf("mine [-25o]: %-25o ending\n\n", c);
+
+	printf("real [25o]: %25o ending\n", ui);
+	ft_printf("mine [25o]: %25o ending\n\n", ui);
+
 	return (0);
 }

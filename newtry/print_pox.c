@@ -1,40 +1,40 @@
 #include "new.h"
 
-char *ft_itoa_base(int n, int base)
+int count_digits(int n, unsigned int base)
+{
+	int count;
+
+	count = 0;
+	while (n)
+	{
+		count++;
+		n = n / base;
+	}
+	return (count);
+}
+
+char *ft_itoa_base(t_flags *flags, int n, unsigned int base)
 {
 	char *str;
 	char *tab;
 	int counter;
-	long holder;
 
-	holder = n;
-	counter = 0;
+	counter = count_digits(n, base);
 	tab = "0123456789ABCDEF";
+	if (flags->type == 'x')
+		tab = "0123456789abcdef";
 	if (n == 0)
 		return ("0");
-	while (holder)
-	{
-		counter++;
-		holder = holder / base;
-	}
-	holder = n;
-	if (n < 0)
-	{
-		if (base == 10)
-			counter++;
-		holder = holder * -1;
-	}
-	str = (char *)malloc(sizeof(char) * counter);
+	str = (char *)malloc(sizeof(char) * counter + 1);
 	if (!str)
 		exit (-1);
 	str[counter] = '\0';
-	while (holder)
+	while (n)
 	{
-		str[--counter] = tab[holder % base];
-		holder = holder / base;
+		str[counter - 1] = tab[n % base];
+		counter--;
+		n = n / base;
 	}
-	if (n < 0 && base == 10)
-		str[0] = '-';
 	return (str);
 }
 
@@ -48,29 +48,91 @@ char *ft_itoa_base(int n, int base)
 //		ft_putnbr_us(n % base);
 //	}
 //}
+int print_address(unsigned long long i, int base)
+{
+	const char *values = "0123456789abcdef";
+	if (i / base)
+		print_address(i / base, base);
+	ft_putchar(values[i % base]);
+	return (i);
+}
+
+void print_width_2(t_flags *flags, int len)
+{
+	if (flags->width > len)
+		{
+			flags->width = flags->width - len;
+			while (flags->width-- > 0)
+					ft_putchar(' ');
+		}
+}
 
 void print_pox(t_flags *flags)
 {
+	unsigned long long i;
 	char *str;
-	int base;
-	long long n;
+	int len;
 
-	n = va_arg(flags->args, unsigned int);
-	if (flags->type == 'x' || flags->type == 'X')
+	str = NULL;
+	len = 0;
+	i = va_arg(flags->args, unsigned long long);
+	if (flags->type == 'X' || flags->type == 'x')
 	{
-		base = 16;
-		str = ft_itoa_base(n, base);
-	}
-	if (flags->type == 'p')
-	{
-		base = 10;
-		str = ft_itoa_base(n, base);
+		if (flags->minus)
+		{
+			str = ft_itoa_base(flags, i, 16);
+			len = ft_strlen(str);
+			ft_putstr(str);
+			print_width_2(flags, len);
+		}
+		else
+		{
+			str = ft_itoa_base(flags, i, 16);
+			len = ft_strlen(str);
+			print_width_2(flags, len);
+			ft_putstr(str);
+		}
 	}
 	if (flags->type == 'o')
 	{
-		base = 8;
-		str = ft_itoa_base(n, base);
+		if (flags->minus)
+		{
+			str = ft_itoa_base(flags, i, 8);
+			len = ft_strlen(str);
+			ft_putstr(str);
+			print_width_2(flags, len);
+		}
+		else
+		{
+			str = ft_itoa_base(flags, i, 8);
+			len = ft_strlen(str);
+			print_width_2(flags, len);
+			ft_putstr(str);
+		}
 	}
-	ft_putstr(str);
-	free(str);
+	if (flags->type == 'p')
+	{
+		if (flags->minus)
+		{
+			ft_putstr("0x");
+			print_address(i, 16);
+			if (flags->width > 14)
+			{
+				flags->width = flags->width - 14;
+				while (flags->width-- > 0)
+					ft_putchar(' ');
+			}
+		}
+		else
+		{
+			if (flags->width > 14)
+			{
+				flags->width = flags->width - 14;
+				while (flags->width-- > 0)
+					ft_putchar(' ');
+			}
+			ft_putstr("0x");
+			print_address(i, 16);
+		}
+	}
 }
