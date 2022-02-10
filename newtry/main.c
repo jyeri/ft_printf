@@ -28,35 +28,54 @@ int	main(void)
 	ui = 3000.000000;
 	c = 'a';
 	s = "HELLO";
-	printf("real [i]: %i ending\n", i);
-	ft_printf("mine [i]: %i ending\n\n", i);
 
-	printf("real [d]: %d ending\n", i);
-	ft_printf("mine [d]: %d ending\n\n", i);
+	printf("TESTS WITH CHAR:\n\n");
 
 	printf("real [c]: %c ending\n", c);
 	ft_printf("mine [c]: %c ending\n\n", c);
 
+//	printf("real [7.5c]: %7.5c ending\n", c);
+//	ft_printf("mine [7.5c]: %7.5c ending\n\n", c);
+//
+//	printf("real [-7.5c]: %-7.5c ending\n", c);
+//	ft_printf("mine [-7.5c]: %-7.5c ending\n\n", c);
+//
+//	printf("real [+7.5c]: %+7.5c ending\n", c);
+//	ft_printf("mine [+7.5c]: %+7.5c ending\n\n", c);
+//
+//	printf("real [+-7.5c]: %+-7.5c ending\n", c);
+//	ft_printf("mine [+-7.5c]: %+-7.5c ending\n\n", c);
+//
+//	printf("real [7.5c]: %7.5c ending\n", c);
+//	ft_printf("mine [7.5c]: %7.5c ending\n\n", c);
+//
+//	printf("real [-7.5c]: %-7.5c ending\n", c);
+//	ft_printf("mine [-7.5c]: %-7.5c ending\n\n", c);
+
+	printf("TESTS WITH STRINGS:\n\n");
+
 	printf("real [s]: %s ending\n", s);
 	ft_printf("mine [s]: %s ending\n\n", s);
 
-	printf("real [p]: %p ending\n", &i);
-	ft_printf("mine [p]: %p ending\n\n", &i);
+	printf("real [7.5s]: %7.5s ending\n", s);
+	ft_printf("mine [7.5s]: %7.5s ending\n\n", s);
 
-	printf("real [o]: %o ending\n", i);
-	ft_printf("mine [o]: %o ending\n\n", i);
+	printf("real [-7.5s]: %-7.5s ending\n", s);
+	ft_printf("mine [-7.5s]: %-7.5s ending\n\n", s);
 
-	printf("real [u]: %u ending\n", ui);
-	ft_printf("mine [u]: %u ending\n\n", ui);
+	printf("real [7.5s]: %7.5s ending\n", s);
+	ft_printf("mine [7.5s]: %7.5s ending\n\n", s);
 
-	printf("real [x]: %x ending\n", ui);
-	ft_printf("mine [x]: %x ending\n\n", ui);
+	printf("real [-7.5s]: %-7.5s ending\n", s);
+	ft_printf("mine [-7.5s]: %-7.5s ending\n\n", s);
 
-	printf("there are no arguments in these ones\n");
-	ft_printf("lets move on to ones with flags\n\n");
+	printf("TESTS WITH INT:\n\n");
 
-	printf("real [7.5i]: %7.5i ending\n", i);
-	ft_printf("mine [7.5i]: %7.5i ending\n\n", i);
+	printf("real [i]: %i ending\n", i);
+	ft_printf("mine [i]: %i ending\n\n",i);
+
+	printf("real [7.1i]: %7.1i ending\n", i);
+	ft_printf("mine [7.1i]: %7.1i ending\n\n", i);
 
 	printf("real [-7.5i]: %-7.5i ending\n", i);
 	ft_printf("mine [-7.5i]: %-7.5i ending\n\n", i);
@@ -67,32 +86,42 @@ int	main(void)
 	printf("real [+-7.5i]: %+-7.5i ending\n", i);
 	ft_printf("mine [+-7.5i]: %+-7.5i ending\n\n", i);
 
-	printf("real [7.5s]: %7.5s ending\n", s);
-	ft_printf("mine [7.5s]: %7.5s ending\n\n", s);
+	printf("real [7.5i]: %7.5i ending\n", i);
+	ft_printf("mine [7.5i]: %7.5i ending\n\n", i);
 
-	printf("real [-7.5s]: %-7.5s ending\n", s);
-	ft_printf("mine [-7.5s]: %-7.5s ending\n\n", s);
+	printf("real [-7.5i]: %-7.5i ending\n", i);
+	ft_printf("mine [-7.5i]: %-7.5i ending\n\n", i);
 
-	printf("real [5d]: %5d ending\n", i);
-	ft_printf("mine [5d]: %5d ending\n\n", i);
-
-	printf("real [c]: %c ending\n", c);
-	ft_printf("mine [c]: %c ending\n\n", c);
-
-	printf("real [s]: %s ending\n", s);
-	ft_printf("mine [s]: %s ending\n\n", s);
-
-	printf("real [p]: %p ending\n", &i);
-	ft_printf("mine [p]: %p ending\n\n", &i);
-
-	printf("real [o]: %o ending\n", i);
-	ft_printf("mine [o]: %o ending\n\n", i);
+	printf("TESTS WITH UINT:\n\n");
 
 	printf("real [u]: %u ending\n", ui);
 	ft_printf("mine [u]: %u ending\n\n", ui);
 
-	printf("real [x]: %x ending\n", ui);
-	ft_printf("mine [x]: %x ending\n\n", ui);
+	printf("real [7.5u]: %7.5u ending\n", ui);
+	ft_printf("mine [7.5u]: %7.5u ending\n\n", ui);
+
+	printf("real [-7.5u]: %-7.5u ending\n", ui);
+	ft_printf("mine [-7.5u]: %-7.5u ending\n\n", ui);
+
+	printf("real [7.5u]: %7.5u ending\n", ui);
+	ft_printf("mine [7.5u]: %7.5u ending\n\n", ui);
+
+	printf("real [-7.5u]: %-7.5u ending\n", ui);
+	ft_printf("mine [-7.5u]: %-7.5u ending\n\n", ui);
+
+	printf("TESTS WITH POINTERS:\n\n");
+
+	printf("real [p]: %p ending\n", &i);
+	ft_printf("mine [p]: %p ending\n\n", &i);
+
+	printf("real [p]: %p ending\n", &ui);
+	ft_printf("mine [p]: %p ending\n\n", &ui);
+
+	printf("real [-25p]: %-25p ending\n", &c);
+	ft_printf("mine [-25p]: %-25p ending\n\n", &c);
+
+	printf("real [25p]: %25p ending\n", &ui);
+	ft_printf("mine [25p]: %25p ending\n\n", &ui);
 
 	return (0);
 }

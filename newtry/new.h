@@ -1,5 +1,6 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
+#include <stdlib.h> 
 
 typedef struct s_flags
 {
@@ -18,8 +19,9 @@ typedef struct s_flags
 	int h; // short int
 	int hh; //short
 	int offset; // width is bigger than precision
-	int bigones;
-	int bigL;
+	int bigones; // big hexa with X
+	int bigL; // big L flag
+	int printlen; // total length of print?
 	va_list args;
 
 } t_flags;
@@ -28,7 +30,7 @@ void init_flags (t_flags *flags);
 int	ft_printf(const char *s, ...);
 void	ft_check_flags(char s, t_flags *flags);
 char *ft_check_type(char *s, t_flags *flags);
-int print_di(t_flags *flags);
+int print_diu(t_flags *flags);
 int print_c(t_flags *flags);
 int print_s(t_flags *flags);
 int print_string(t_flags *flags);
@@ -38,4 +40,6 @@ int print_octal(t_flags *flags);
 int print_unsigned(char c, t_flags *flags, int base);
 int print_float(t_flags *flags);
 void print_nbr_base(long long n, int base, t_flags *flags);
+void ft_putnbr_us(unsigned int n, int base);
+void print_pox(t_flags *flags);
 void print_actual_string(char *str, t_flags *flags);

@@ -9,7 +9,6 @@ int print_s(t_flags *flags)
 {
 	char *str;
 	int len;
-	int return_value;
 
 	str = va_arg(flags->args, char *);
 	if (!str)
@@ -19,7 +18,7 @@ int print_s(t_flags *flags)
 		flags->precision = len;
 	if (flags->width > flags->precision)
 		flags->offset = flags->width - flags->precision;
-	return_value = flags->offset + flags->precision;
+	flags->printlen = flags->offset + flags->precision;
 	if (flags->minus)
 	{
 		ft_putstr(str);
@@ -32,14 +31,32 @@ int print_s(t_flags *flags)
 			ft_putchar(' ');
 		ft_putnstr(str, flags->precision);
 	}
-	return (return_value);
+	return (flags->printlen);
 }
 
 int print_c(t_flags *flags)
 {
 	char c;
+	int len;
 	
+	len = 1;
 	c = (char)va_arg(flags->args, int);
+	if (!flags->dot || flags->precision > len)
+		flags->precision = len;
+	if (flags->width > flags->precision)
+		flags->offset = flags->width - flags->precision;
+	if (flags->minus)
+	{
+		ft_putchar(c);
+		while (flags->offset-- > 0)
+			ft_putchar(' ');
+	}
+	else
+	{
+		while (flags->offset-- > 0)
+			ft_putchar(' ');
+		ft_putchar(c);
+	}
 
 	return (1);
 }

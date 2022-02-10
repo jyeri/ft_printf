@@ -19,20 +19,20 @@ char *ft_check_type(char *s, t_flags *flags)
 		ft_check_flags(*s++, flags);
 	}
 	flags->type = *s;
-	if (flags->type == 'd' || flags->type == 'i')
-		print_di(flags);
+	if (flags->type == 'd' || flags->type == 'i' || flags->type == 'u')
+		print_diu(flags);
 	else if (flags->type == 's')
 		print_s(flags);
 	else if (flags->type == 'c')
 		print_c(flags);
-	else if (flags->type == 'p')
-		print_pointer(flags);
-	else if (flags->type == 'o')
-		print_octal(flags);
-	else if (flags->type == 'u')
-		print_unsigned(*s, flags, 10);
-	else if (flags->type == 'x' || flags->type == 'X')
-		print_unsigned(*s, flags, 16);
+	else if (flags->type == 'p' || flags->type == 'o' || flags->type == 'x' || flags->type == 'X')
+		print_pox(flags);
+//	else if (flags->type == 'o')
+//		print_octal(flags);
+//	else if (flags->type == 'u')
+//		print_unsigned(*s, flags, 10);
+//	else if (flags->type == 'x' || flags->type == 'X')
+//		print_unsigned(*s, flags, 16);
 	else if (flags->type == 'f')
 		print_float(flags);
 	else
