@@ -1,6 +1,6 @@
-#include "../libft/libft.h"
+#include "libft/libft.h"
 #include <stdarg.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
 typedef struct s_flags
 {

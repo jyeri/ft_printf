@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:40 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/02 18:27:08 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/14 19:15:05 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	main(void)
 	unsigned int ui;
 	char c;
 	const char *s;
+	float d1;
 
 	i = 902;
 	i2 = 6;
 	i3 = 7;
 	ui = 3000.000000;
+	d1 = 10.327;
 	c = 'a';
 	s = "HELLO";
 
@@ -70,6 +72,7 @@ int	main(void)
 	ft_printf("mine [-7.5s]: %-7.5s ending\n\n", s);
 
 	printf("TESTS WITH INT:\n\n");
+	sleep(3);
 
 	printf("real [i]: %i ending\n", i);
 	ft_printf("mine [i]: %i ending\n\n",i);
@@ -93,6 +96,7 @@ int	main(void)
 	ft_printf("mine [-7.5i]: %-7.5i ending\n\n", i);
 
 	printf("TESTS WITH UINT:\n\n");
+	sleep(3);
 
 	printf("real [u]: %u ending\n", ui);
 	ft_printf("mine [u]: %u ending\n\n", ui);
@@ -110,6 +114,7 @@ int	main(void)
 	ft_printf("mine [-7.5u]: %-7.5u ending\n\n", ui);
 
 	printf("TESTS WITH POINTERS:\n\n");
+	sleep(3);
 
 	printf("real [p]: %p ending\n", &i);
 	ft_printf("mine [p]: %p ending\n\n", &i);
@@ -124,6 +129,7 @@ int	main(void)
 	ft_printf("mine [25p]: %25p ending\n\n", &ui);
 
 	printf("TESTS WITH X:\n\n");
+	sleep(3);
 
 	printf("real [x]: %x ending\n", i);
 	ft_printf("mine [x]: %x ending\n\n", i);
@@ -138,6 +144,7 @@ int	main(void)
 	ft_printf("mine [25x]: %25x ending\n\n", ui);
 
 	printf("TESTS WITH O:\n\n");
+	sleep(3);
 
 	printf("real [o]: %o ending\n", i);
 	ft_printf("mine [o]: %o ending\n\n", i);
@@ -150,6 +157,22 @@ int	main(void)
 
 	printf("real [25o]: %25o ending\n", ui);
 	ft_printf("mine [25o]: %25o ending\n\n", ui);
+
+	printf("TESTS WITH f:\n\n");
+	sleep(3);
+
+//	printf("real [f]: %f ending\n", d1);
+//	ft_printf("mine [f]: %f ending\n\n", d1);
+
+//	printf("real [f]: %f ending\n", d1);
+//	ft_printf("mine [f]: %f ending\n\n", d1);
+//
+//	printf("real [-25f]: %-25f ending\n", d1);
+//	ft_printf("mine [-25f]: %-25f ending\n\n", d1);
+//
+//	printf("real [25f]: %25f ending\n", d1);
+//	ft_printf("mine [25f]: %25f ending\n\n", d1);
+
 
 	return (0);
 }

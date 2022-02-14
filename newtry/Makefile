@@ -1,4 +1,4 @@
-LIBFT = ../libft/libft.a
+LIBFT = /libft/libft.a
 
 NAME = libftprintf.a
 
@@ -11,20 +11,20 @@ FLAGS = -Wall -Wextra -Werror -c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C ../libft
-	cp ../libft/libft.a $(NAME)
+	$(MAKE) -C libft
+	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
 
 all : $(NAME)
 
 clean :
-	$(MAKE) clean -C ../libft
+	$(MAKE) clean -C libft
 	rm -rf $(SURPL_O)
 	rm -rf $(OBJS)
 
 fclean : clean
-	$(MAKE) fclean -C ../libft
+	$(MAKE) fclean -C libft
 	rm -rf $(NAME)
 
 re : fclean all
