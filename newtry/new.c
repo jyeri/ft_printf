@@ -14,7 +14,7 @@ void	init_flags (t_flags *flags)
 
 char *ft_check_type(char *s, t_flags *flags)
 {
-	while (!ft_strchr("cspdiouxX%", *s))
+	while (!ft_strchr("cspdioufxX%", *s))
 	{
 		ft_check_flags(*s++, flags);
 	}

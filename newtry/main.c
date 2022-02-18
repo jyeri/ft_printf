@@ -6,7 +6,7 @@
 /*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:56:40 by jrummuka          #+#    #+#             */
-/*   Updated: 2022/02/14 19:15:05 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/02/18 18:39:40 by jrummuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	unsigned int ui;
 	char c;
 	const char *s;
-	float d1;
+	double d1;
 
 	i = 902;
 	i2 = 6;
@@ -161,18 +161,17 @@ int	main(void)
 	printf("TESTS WITH f:\n\n");
 	sleep(3);
 
-//	printf("real [f]: %f ending\n", d1);
-//	ft_printf("mine [f]: %f ending\n\n", d1);
+	printf("real [f]: %f ending\n", d1);
+	ft_printf("mine [f]: %f ending\n\n", d1);
 
-//	printf("real [f]: %f ending\n", d1);
-//	ft_printf("mine [f]: %f ending\n\n", d1);
-//
-//	printf("real [-25f]: %-25f ending\n", d1);
-//	ft_printf("mine [-25f]: %-25f ending\n\n", d1);
-//
-//	printf("real [25f]: %25f ending\n", d1);
-//	ft_printf("mine [25f]: %25f ending\n\n", d1);
+	printf("real [f]: %f ending\n", d1);
+	ft_printf("mine [f]: %f ending\n\n", d1);
 
+	printf("real [-25f]: %-25f ending\n", d1);
+	ft_printf("mine [-25f]: %-25f ending\n\n", d1);
+
+	printf("real [25f]: %25f ending\n", d1);
+	ft_printf("mine [25f]: %25f ending\n\n", d1);
 
 	return (0);
 }
